@@ -45,6 +45,7 @@ namespace Bookstore.Infrastructure
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
                 if (PageClassesEnabled)
                 {
+                    //Getting the button class
                     tb.AddCssClass(PageClass);
                     tb.AddCssClass(i == BookiePager.CurrentPage
                         ? PageClassSelected : PageClassNormal);

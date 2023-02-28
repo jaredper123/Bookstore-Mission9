@@ -12,6 +12,7 @@ namespace Bookstore.Models.ViewModels
         public int CurrentPage { get; set; }
         //Decide how many pages
         public int TotalPage => (int) Math.Ceiling(((double) TotalNumBooks / BooksPerPage));
+        //Info Database
 
     }
 }

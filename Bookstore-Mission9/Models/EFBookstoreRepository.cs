@@ -9,7 +9,7 @@ namespace Bookstore.Models
     {
         private BookstoreContext context { get; set; }
         
-        
+        //setting the context via the repository interface in a nother file.
 
         public EFBookstoreRepository(BookstoreContext tmp)
         {

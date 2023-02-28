@@ -29,6 +29,7 @@ namespace Bookstore_Mission9
 
             services.AddDbContext<BookstoreContext>(options =>
            {
+               //using sqlite as the database here
                options.UseSqlite(Configuration["ConnectionStrings:BookConnection"]);
            });
 
@@ -57,6 +58,7 @@ namespace Bookstore_Mission9
 
             app.UseEndpoints(endpoints =>
             {
+                //setting up the controller
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

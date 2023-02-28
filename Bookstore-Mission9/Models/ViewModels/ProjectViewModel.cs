@@ -10,5 +10,6 @@ namespace Bookstore.Models.ViewModels
     {
         public IQueryable<Book> Books { get; set; }
         public Infopage Infopage { get; set; }
+        //Shared data
     }
 }
