@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Bookstore_Mission9</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    @*This is used to set the bootstrap across all the navbars for the website.*@
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container bg-dark text-white p-2">
+                <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index">Bookstore</a>
+            </div>
+        </nav>
+    </header>
+    <div class="row m-1 p-1">
+        <div id="types" class="col-3">
+            <vc:types>
+
+            </vc:types>
+        </div>
+    </div>
+    <div class="container">
+        <main role="main" class="col-9">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer bg-dark text-white">
+        <div class="container">
+            &copy; 2023 - Bookstore_Mission9 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

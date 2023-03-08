@@ -8,28 +8,51 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    @*This is used to set the bootstrap across all the navbars for the website.*@
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container bg-dark text-white p-2">
-                <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index">Bookstore</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Bookstore</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto"></ul>
+                </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="col-9">
-            @RenderBody()
-        </main>
+
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <nav class="col-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <vc:types>
+
+                    </vc:types>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">@ViewData["Title"]</h1>
+                </div>
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer bg-dark text-white">
+    <footer class="footer mt-auto py-3">
         <div class="container">
-            &copy; 2023 - Bookstore_Mission9 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <span class="text-muted">&copy; 2023 - Bookstore_Mission9 - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a></span>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+

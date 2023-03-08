@@ -1,0 +1,42 @@
+﻿@page
+@model Bookstore_Mission9.Pages.CartModel
+@{
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Your Shopping Cart</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model.shopcart.Items)
+                    {
+                        <tr>
+                            <td>@i.Book.Title</td>
+                            <td>@i.Quantity</td>
+                            <td>@i.Book.Price.ToString("c")</td>
+                            <td>$@((double)i.Book.Price *  i.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="font-weight-bold text-right">Total</td>
+                        <td class="font-weight-bold">@Model.shopcart.CalculateTotal().ToString("c")</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="text-center">
+                <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
