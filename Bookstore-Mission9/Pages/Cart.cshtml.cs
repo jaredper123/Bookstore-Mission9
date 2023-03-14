@@ -13,26 +13,31 @@ namespace Bookstore_Mission9.Pages
     public class CartModel : PageModel
     {
         private IBookstoreRepository repo { get; set; }
-        public CartModel (IBookstoreRepository temp)
-        {
-            repo = temp;
-        }
         public ShoppingCart shopcart { get; set; }
         public string ReturnUrl { get; set; }
+
+        public CartModel (IBookstoreRepository temp, ShoppingCart s)
+        {
+            repo = temp;
+            shopcart = s;
+        }
         public void OnGet(string returnurl)
         {
             ReturnUrl = returnurl ?? "/";
-            shopcart = HttpContext.Session.GetJson<ShoppingCart>("shopcart") ?? new ShoppingCart(); ;
         }
 
         public IActionResult OnPost(int BookId, string returnurl)
         {
             Book b = repo.Books.FirstOrDefault(x => x.BookId == BookId);
-            shopcart = HttpContext.Session.GetJson<ShoppingCart>("shopcart") ?? new ShoppingCart();
             shopcart.AddItem(b, 1);
 
-            HttpContext.Session.SetJson("shopcart", shopcart);
             return RedirectToPage(new { ReturnUrl = returnurl });
+        }
+
+        public IActionResult OnPostRemove (int bookid, string returnUrl)
+        {
+            shopcart.RemoveItem(shopcart.Items.First(x => x.Book.BookId == bookid).Book);
+            return RedirectToPage(new { ReturnUrl = returnUrl });
         }
     }
 }
